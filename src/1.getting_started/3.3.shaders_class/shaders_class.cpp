@@ -101,6 +101,7 @@ int main()
 
         // render the triangle
         ourShader.use();
+        ourShader.setFloat("hOffsetX", 0.5);
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
