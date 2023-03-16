@@ -184,12 +184,14 @@ set(GUEST_ARTICLES
 	8.guest/2021/4.dsa
 	8.guest/2022/5.computeshader_helloworld
 	8.guest/2022/6.physically_based_bloom
+	8.guest/2022/7.area_lights/1.area_light
+	8.guest/2022/7.area_lights/2.multiple_area_lights
 )
 
 configure_file(configuration/root_directory.h.in configuration/root_directory.h)
 include_directories(${CMAKE_BINARY_DIR}/configuration)
 
-# first create relevant static libraries requried for other projects
+# first create relevant static libraries required for other projects
 add_library(STB_IMAGE "src/stb_image.cpp")
 set(LIBS ${LIBS} STB_IMAGE)
 

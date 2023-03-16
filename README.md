@@ -12,26 +12,18 @@ First make sure you have CMake, Git, and GCC by typing as root (sudo) `apt-get i
 Using root (sudo) and type `apt-get install libsoil-dev libglm-dev libassimp-dev libglew-dev libglfw3-dev libxinerama-dev libxcursor-dev  libxi-dev libfreetype-dev libgl1-mesa-dev xorg-dev` .
 Next, run CMake (preferably CMake-gui). The source directory is LearnOpenGL and specify the build directory as LearnOpenGL/build. Creating the build directory within LearnOpenGL is important for linking to the resource files (it also will be ignored by Git). Hit configure and specify your compiler files (Unix Makefiles are recommended), resolve any missing directories or libraries, and then hit generate. Navigate to the build directory (`cd LearnOpenGL/build`) and type `make` in the terminal. This should generate the executables in the respective chapter folders.
 
-Note that CodeBlocks or other IDEs may have issues running the programs due to problems finding the shader and resource files, however it should still be able to generate the exectuables. To work around this problem it is possible to set an environment variable to tell the tutorials where the resource files can be found. The environment variable is named LOGL_ROOT_PATH and may be set to the path to the root of the LearnOpenGL directory tree. For example:
+Note that CodeBlocks or other IDEs may have issues running the programs due to problems finding the shader and resource files, however it should still be able to generate the executables. To work around this problem it is possible to set an environment variable to tell the tutorials where the resource files can be found. The environment variable is named LOGL_ROOT_PATH and may be set to the path to the root of the LearnOpenGL directory tree. For example:
 
     `export LOGL_ROOT_PATH=/home/user/tutorials/LearnOpenGL`
 
-Running `ls $LOGL_ROOT_PATH` should list, among other things, this README file and the resources direcory.
-
-### Linux building in Docker
-Using [this project](https://github.com/01e9/docker-ide) you can start IDE in docker:
-```
-.../docker-ide/ide cpp-gpu ~/.../clion/bin/clion.sh -x11docker "--gpu"
-```
+Running `ls $LOGL_ROOT_PATH` should list, among other things, this README file and the resources directory.
 
 ## Mac OS X building
-Building on Mac OS X is fairly simple (thanks [@hyperknot](https://github.com/hyperknot)):
+Building on Mac OS X is fairly simple:
 ```
 brew install cmake assimp glm glfw freetype
-mkdir build
-cd build
-cmake ../.
-make -j8
+cmake -S . -B build
+cmake --build build -j$(sysctl -n hw.logicalcpu)
 ```
 ## Create Xcode project on Mac platform
 Thanks [@caochao](https://github.com/caochao):
